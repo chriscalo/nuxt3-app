@@ -1,23 +1,15 @@
 <script setup>
-  // Get underlying request event
-  const event = useRequestEvent();
-  console.debug({
-    req: event?.node?.req,
-    url: event?.path,
-  });
-  
-  // Get the URL
-  const url = event?.path;
-  
+  const url = useRequestURL();
   const msg = "Hello, World!";
 </script>
 
 <template>
+  <Navigation/>
   <div>
     {{ msg }}
   </div>
   <div>
-    URL: {{ url }}
+    URL: {{ `${url.pathname}${url.search}` }}
   </div>
 </template>
 
